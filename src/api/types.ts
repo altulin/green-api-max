@@ -59,7 +59,7 @@ export type OtherMessageData = { typeMessage: string }
 
 export type ExtendedTextMessageData = {
   typeMessage: 'extendedTextMessage'
-  textMessageData: { text: string }
+  extendedTextMessageData: { text: string }
 }
 
 export type MessageData =
