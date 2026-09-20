@@ -5,12 +5,209 @@ export type Credentials = {
 }
 
 export type StateInstance =
-  | 'authorized'
   | 'notAuthorized'
+  | 'authorized'
   | 'blocked'
   | 'starting'
   | 'suspended'
   | 'pendingPassword'
+
+export type WebhookType =
+  | 'incomingMessageReceived'
+  | 'outgoingMessageReceived'
+  | 'outgoingAPIMessageReceived'
+  | 'outgoingMessageStatus'
+  | 'stateInstanceChanged'
+  | 'quotaExceeded'
+
+export type SenderData = {
+  chatId: string
+  chatName: string
+  chatType: 'user' | 'group' | 'channel' | 'bot'
+  sender: string
+  senderName: string
+  senderType: 'user' | 'group' | 'channel' | 'bot'
+  senderContactName: string
+  senderPhoneNumber: number
+}
+
+export type QuotedMessage = {
+  stanzaId: string
+  participant: string
+}
+
+export type TextMessageData = {
+  typeMessage: 'textMessage'
+  textMessageData: {
+    textMessage: string
+    isForwarded?: boolean
+    forwardingScore?: number
+  }
+  quotedMessage?: QuotedMessage
+}
+
+export type ExtendedTextMessageData = {
+  typeMessage: 'extendedTextMessage'
+  extendedTextMessageData: {
+    text: string
+    description?: string
+    title?: string
+    jpegThumbnail?: string
+    isForwarded?: boolean
+    forwardingScore?: number
+  }
+  quotedMessage?: QuotedMessage
+}
+
+export type QuotedMessageData = {
+  typeMessage: 'quotedMessage'
+  extendedTextMessageData: {
+    text: string
+    stanzaId: string
+    participant: string
+  }
+}
+
+export type ReactionMessageData = {
+  typeMessage: 'reactionMessage'
+  extendedTextMessageData: {
+    text: string
+  }
+  quotedMessage?: QuotedMessage
+}
+
+export type FileMessageData = {
+  typeMessage:
+    | 'imageMessage'
+    | 'videoMessage'
+    | 'documentMessage'
+    | 'audioMessage'
+    | 'stickerMessage'
+  fileMessageData: {
+    downloadUrl: string
+    downloadUrlJpeg?: string
+    caption?: string
+    fileName?: string
+    jpegThumbnail?: string
+    mimeType?: string
+    isAnimated?: boolean
+    isForwarded?: boolean
+    forwardingScore?: number
+  }
+  quotedMessage?: QuotedMessage
+}
+
+export type LocationMessageData = {
+  typeMessage: 'locationMessage'
+  locationMessageData: {
+    latitude: number
+    longitude: number
+    isForwarded?: boolean
+    forwardingScore?: number
+  }
+}
+
+export type ContactMessageData = {
+  typeMessage: 'contactMessage'
+  contactMessageData: {
+    chatId: string
+    urlAvatar: string
+    phoneNumber: string
+    displayName: string
+    vcard: string
+    isForwarded?: boolean
+    forwardingScore?: number
+  }
+}
+
+export type PollMessageData = {
+  typeMessage: 'pollMessage'
+  pollMessageData: {
+    name: string
+    options: { optionName: string }[]
+    allowToChangeAnswer: boolean
+  }
+  quotedMessage?: QuotedMessage
+}
+
+export type EditedMessageData = {
+  typeMessage: 'editedMessage'
+  editedMessageData: {
+    textMessage: string
+    stanzaId: string
+  }
+}
+
+export type DeletedMessageData = {
+  typeMessage: 'deletedMessage'
+  deletedMessageData: {
+    stanzaId: string
+  }
+}
+
+export type MessageData =
+  | TextMessageData
+  | ExtendedTextMessageData
+  | FileMessageData
+  | LocationMessageData
+  | ContactMessageData
+  | PollMessageData
+  | EditedMessageData
+  | DeletedMessageData
+  | QuotedMessageData
+  | ReactionMessageData
+
+export type NotificationBase<T extends WebhookType, Extra> = {
+  typeWebhook: T
+  instanceData: { idInstance: number; wid: string; typeInstance: string }
+  timestamp: number // секунды Unix
+} & Extra
+
+export type MessageWebhookType =
+  | 'incomingMessageReceived'
+  | 'outgoingMessageReceived'
+  | 'outgoingAPIMessageReceived'
+
+export type MessageNotification = NotificationBase<
+  MessageWebhookType,
+  { idMessage: string; senderData: SenderData; messageData: MessageData }
+>
+
+export type OutgoingMessageStatusNotification = NotificationBase<
+  'outgoingMessageStatus',
+  {
+    chatId: string
+    idMessage: string
+    status: 'delivered' | 'read' | 'failed' | 'noAccount' | 'notInGroup'
+    description?: string
+  }
+>
+
+export type StateInstanceChangedNotification = NotificationBase<
+  'stateInstanceChanged',
+  {
+    stateInstance: StateInstance
+  }
+>
+
+export type QuotaExceededNotification = NotificationBase<
+  'quotaExceeded',
+  {
+    quotaData: {
+      method: 'correspondents'
+      used: string
+      total: string
+      status: string
+      description: string
+    }
+  }
+>
+
+export type NotificationBody =
+  | MessageNotification
+  | OutgoingMessageStatusNotification
+  | StateInstanceChangedNotification
+  | QuotaExceededNotification
 
 export type GetStateInstanceResponse = {
   stateInstance: StateInstance
@@ -30,52 +227,28 @@ export type CheckAccountResponse = {
 export type SendMessageRequest = {
   chatId: string
   message: string
+  typingTime?: number
+  quotedMessageId?: string
 }
 
 export type SendMessageResponse = {
   idMessage: string
 }
 
-export type DeleteNotificationResponse = { result: boolean; reason: string }
+export type ReceiveNotificationRequest = {
+  receiveTimeout?: number
+}
 
 export type ReceiveNotificationResponse = {
   receiptId: number
   body: NotificationBody
 }
 
-export type SenderData = {
-  chatType: 'user' | 'group' | 'channel'
-  chatId: string
-  senderName: string
-  chatName: string
+export type DeleteNotificationRequest = {
+  receiptId: number
 }
 
-export type TextMessageData = {
-  typeMessage: 'textMessage'
-  textMessageData: { textMessage: string }
+export type DeleteNotificationResponse = {
+  result: boolean
+  reason: string
 }
-
-export type OtherMessageData = { typeMessage: string }
-
-export type ExtendedTextMessageData = {
-  typeMessage: 'extendedTextMessage'
-  extendedTextMessageData: { text: string }
-}
-
-export type MessageData =
-  TextMessageData | OtherMessageData | ExtendedTextMessageData
-
-export type MessageNotification = {
-  typeWebhook:
-    | 'incomingMessageReceived'
-    | 'outgoingMessageReceived'
-    | 'outgoingAPIMessageReceived'
-  idMessage: string
-  timestamp: number // секунды
-  senderData: SenderData
-  messageData: MessageData
-}
-
-export type OtherNotification = { typeWebhook: string }
-
-export type NotificationBody = MessageNotification | OtherNotification
