@@ -4,12 +4,14 @@ import {
   type PayloadAction,
 } from '@reduxjs/toolkit'
 import {
+  ApiError,
   checkAccount,
   getChatHistory,
   getContactInfo,
   getErrorMessage,
   sendMessage as sendMessageRequest,
 } from '../api/greenApi'
+import type { ChatHistoryMessage, Credentials } from '../api/types'
 import type { Chat, Message } from '../types/chat'
 import { loadChats } from '../utils/chatsStorage'
 import { loadCredentials } from '../utils/credentialsStorage'
@@ -80,6 +82,22 @@ export const createChat = createAsyncThunk<
   }
 })
 
+// У getChatHistory лимит — один запрос в секунду. Если быстро переключаться
+// между чатами, второй запрос получит 429, поэтому даём одну повторную попытку.
+async function loadHistoryWithRetry(
+  credentials: Credentials,
+  chatId: string,
+): Promise<ChatHistoryMessage[]> {
+  try {
+    return await getChatHistory(credentials, chatId)
+  } catch (error) {
+    if (!(error instanceof ApiError) || error.status !== 429) throw error
+
+    await new Promise((resolve) => setTimeout(resolve, 1500))
+    return await getChatHistory(credentials, chatId)
+  }
+}
+
 // История чата: грузим один раз при первом открытии.
 // Повторный запрос отсекается через condition, чтобы не дёргать API
 // при каждом переключении между чатами.
@@ -96,7 +114,7 @@ export const loadChatHistory = createAsyncThunk<
     }
 
     try {
-      const history = await getChatHistory(credentials, chatId)
+      const history = await loadHistoryWithRetry(credentials, chatId)
       const messages = history
         .map(parseHistoryMessage)
         .filter((message): message is Message => message !== null)
