@@ -1,17 +1,17 @@
 import { useState, type SubmitEvent } from 'react'
-import type { Credentials } from '../../api/types'
 import { useAppDispatch, useAppSelector } from '../../store'
 import { login } from '../../store/authSlice'
 import { buildApiUrl } from '../../utils/apiUrl'
 import styles from './LoginForm.module.scss'
 
-type FieldErrors = Partial<Record<keyof Credentials, string>>
+type FormValues = {
+  idInstance: string
+  apiTokenInstance: string
+}
 
-function validate({
-  idInstance,
-  apiTokenInstance,
-  apiUrl,
-}: Credentials): FieldErrors {
+type FieldErrors = Partial<Record<keyof FormValues, string>>
+
+function validate({ idInstance, apiTokenInstance }: FormValues): FieldErrors {
   const errors: FieldErrors = {}
 
   if (idInstance.length === 0) {
@@ -26,10 +26,6 @@ function validate({
     errors.apiTokenInstance = 'Введите apiTokenInstance из личного кабинета'
   }
 
-  if (apiUrl.length > 0 && !/^https?:\/\/\S+$/.test(apiUrl)) {
-    errors.apiUrl = 'Адрес должен начинаться с https://'
-  }
-
   return errors
 }
 
@@ -40,7 +36,6 @@ export function LoginForm() {
 
   const [idInstance, setIdInstance] = useState('')
   const [apiTokenInstance, setApiTokenInstance] = useState('')
-  const [apiUrl, setApiUrl] = useState('')
   const [errors, setErrors] = useState<FieldErrors>({})
 
   const isLoading = status === 'loading'
@@ -48,10 +43,9 @@ export function LoginForm() {
   function handleSubmit(event: SubmitEvent<HTMLFormElement>) {
     event.preventDefault()
 
-    const values: Credentials = {
+    const values: FormValues = {
       idInstance: idInstance.trim(),
       apiTokenInstance: apiTokenInstance.trim(),
-      apiUrl: apiUrl.trim(),
     }
 
     const nextErrors = validate(values)
@@ -62,7 +56,7 @@ export function LoginForm() {
     void dispatch(
       login({
         ...values,
-        apiUrl: values.apiUrl || buildApiUrl(values.idInstance),
+        apiUrl: buildApiUrl(values.idInstance),
       }),
     )
   }
@@ -108,32 +102,6 @@ export function LoginForm() {
             <span className={styles.fieldError}>{errors.apiTokenInstance}</span>
           )}
         </label>
-
-        <details className={styles.advanced}>
-          <summary className={styles.summary}>Дополнительно</summary>
-          <label className={styles.field}>
-            <span className={styles.label}>API URL</span>
-            <input
-              className={styles.input}
-              value={apiUrl}
-              onChange={(event) => setApiUrl(event.target.value)}
-              autoComplete="off"
-              placeholder={
-                idInstance.trim().length >= 4
-                  ? buildApiUrl(idInstance.trim())
-                  : 'https://3100.api.green-api.com'
-              }
-              disabled={isLoading}
-              aria-invalid={errors.apiUrl !== undefined}
-            />
-            <span className={styles.hint}>
-              Оставьте пустым — адрес возьмём из idInstance
-            </span>
-            {errors.apiUrl && (
-              <span className={styles.fieldError}>{errors.apiUrl}</span>
-            )}
-          </label>
-        </details>
 
         {serverError && (
           <p className={styles.formError} role="alert">

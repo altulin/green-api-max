@@ -67,29 +67,10 @@
   }
 }
 
-.hint,
-.fieldError {
-  font-size: 12px;
-  line-height: 1.3;
-}
-
-.hint {
-  color: var(--text-tertiary);
-}
-
 .fieldError {
   color: var(--text-negative);
-}
-
-.advanced {
-  margin-top: -4px;
-}
-
-.summary {
-  color: var(--text-secondary);
-  font-size: 13px;
-  cursor: pointer;
-  user-select: none;
+  font-size: 12px;
+  line-height: 1.3;
 }
 
 .formError {
