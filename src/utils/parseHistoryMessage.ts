@@ -40,6 +40,9 @@ function extractText(item: ChatHistoryMessage): string | null {
 }
 
 export function parseHistoryMessage(item: ChatHistoryMessage): Message | null {
+  // удалённое сообщение приходит в истории с этой пометкой
+  if (item.isDeleted === true) return null
+
   const text = extractText(item)
   if (text === null) return null
 

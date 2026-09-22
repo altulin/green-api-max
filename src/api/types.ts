@@ -250,6 +250,8 @@ export type ChatHistoryMessage = {
   caption?: string
   senderName?: string
   statusMessage?: 'sent' | 'delivered' | 'read'
+  isDeleted?: boolean // удалённые сообщения API всё равно возвращает
+  isEdited?: boolean
 }
 
 export type GetChatHistoryRequest = {
