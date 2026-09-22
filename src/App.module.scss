@@ -1,0 +1,19 @@
+.layout {
+  display: flex;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+
+  // как в MAX: фон и узор лежат на всём окне, а список чатов закрывает левую часть
+  background:
+    url('./assets/chat-pattern.svg'),
+    linear-gradient(
+      28deg,
+      var(--chat-bg-step-1) 8.03%,
+      var(--chat-bg-step-2) 91.51%
+    );
+  background-repeat: repeat, no-repeat;
+  background-size:
+    340px 340px,
+    cover;
+}
