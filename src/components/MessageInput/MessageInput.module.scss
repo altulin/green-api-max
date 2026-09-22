@@ -5,6 +5,10 @@
   max-width: var(--message-zone-width);
   margin-inline: auto;
   padding: 0 16px 16px;
+
+  @media (width <= 768px) {
+    padding: 0 8px 12px;
+  }
 }
 
 // белая «пилюля», как в MAX: высота 48px, скругление 16px, отступ 4px

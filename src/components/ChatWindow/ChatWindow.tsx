@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../../store'
-import { loadChatHistory } from '../../store/chatsSlice'
+import { chatClosed, loadChatHistory } from '../../store/chatsSlice'
 import type { Message } from '../../types/chat'
 import { formatPhone } from '../../utils/phone'
 import { Avatar } from '../Avatar/Avatar'
@@ -43,6 +43,24 @@ export function ChatWindow() {
   return (
     <section className={styles.window}>
       <header className={styles.header}>
+        <button
+          className={styles.back}
+          type="button"
+          onClick={() => dispatch(chatClosed())}
+          aria-label="К списку чатов"
+        >
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+            <path
+              d="M15 5l-7 7 7 7"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </button>
+
         <Avatar
           title={title}
           chatId={chat.chatId}

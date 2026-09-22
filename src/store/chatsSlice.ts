@@ -186,6 +186,11 @@ const chatsSlice = createSlice({
       state.activeChatId = action.payload
     },
 
+    // на узком экране это возврат к списку чатов
+    chatClosed(state) {
+      state.activeChatId = null
+    },
+
     createErrorCleared(state) {
       state.createStatus = 'idle'
       state.createError = null
@@ -296,6 +301,7 @@ const chatsSlice = createSlice({
 })
 
 export const {
+  chatClosed,
   chatSelected,
   createErrorCleared,
   messageAdded,
