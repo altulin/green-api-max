@@ -1,0 +1,128 @@
+.page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 16px;
+  background: var(--background-surface);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 380px;
+  padding: 28px 24px;
+  border-radius: var(--radius-cell);
+  background: var(--background-primary);
+  box-shadow: 0 8px 32px rgb(12 13 14 / 10%);
+}
+
+.title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.subtitle {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.label {
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.input {
+  padding: 10px 12px;
+  border: 1px solid var(--input-stroke);
+  border-radius: var(--radius-input);
+  font-size: 15px;
+  transition: border-color 0.15s;
+
+  &:focus {
+    border-color: var(--accent);
+    outline: none;
+  }
+
+  &[aria-invalid='true'] {
+    border-color: var(--text-negative);
+  }
+
+  &:disabled {
+    background: var(--background-secondary);
+  }
+}
+
+.hint,
+.fieldError {
+  font-size: 12px;
+  line-height: 1.3;
+}
+
+.hint {
+  color: var(--text-tertiary);
+}
+
+.fieldError {
+  color: var(--text-negative);
+}
+
+.advanced {
+  margin-top: -4px;
+}
+
+.summary {
+  color: var(--text-secondary);
+  font-size: 13px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.formError {
+  margin: 0;
+  padding: 10px 12px;
+  border-radius: var(--radius-input);
+  background: rgb(206 66 87 / 10%);
+  color: var(--text-negative);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.submit {
+  padding: 12px;
+  border: none;
+  border-radius: var(--radius-input);
+  background: var(--accent);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s;
+
+  &:hover:not(:disabled) {
+    background: var(--accent-hover);
+  }
+
+  &:active:not(:disabled) {
+    background: var(--accent-pressed);
+  }
+
+  &:disabled {
+    background: var(--accent-disabled);
+    cursor: default;
+  }
+}
