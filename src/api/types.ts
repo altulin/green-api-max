@@ -224,6 +224,41 @@ export type CheckAccountResponse = {
   fromCache: boolean
 }
 
+export type GetContactInfoRequest = {
+  chatId: string
+}
+
+export type GetContactInfoResponse = {
+  chatId: string
+  avatar: string // пустая строка, если аватара нет
+  name: string // имя из профиля MAX
+  contactName: string // имя из записной книжки аккаунта
+  chatType: 'user' | 'group' | 'channel' | 'bot'
+  phoneNumber: number
+}
+
+// История чата приходит в плоском формате, не таком, как уведомления:
+// направление лежит в type, а текст — прямо в textMessage.
+export type ChatHistoryMessage = {
+  type: 'incoming' | 'outgoing'
+  idMessage: string
+  timestamp: number // секунды
+  chatId: string
+  typeMessage: string
+  textMessage?: string
+  extendedTextMessage?: { text?: string }
+  caption?: string
+  senderName?: string
+  statusMessage?: 'sent' | 'delivered' | 'read'
+}
+
+export type GetChatHistoryRequest = {
+  chatId: string
+  count?: number
+}
+
+export type GetChatHistoryResponse = ChatHistoryMessage[]
+
 export type SendMessageRequest = {
   chatId: string
   message: string

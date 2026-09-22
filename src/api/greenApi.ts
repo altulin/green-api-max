@@ -2,6 +2,8 @@ import type {
   CheckAccountResponse,
   Credentials,
   DeleteNotificationResponse,
+  GetChatHistoryResponse,
+  GetContactInfoResponse,
   GetStateInstanceResponse,
   ReceiveNotificationResponse,
   SendMessageResponse,
@@ -94,6 +96,31 @@ export async function checkAccount(
   })
   if (!data) throw new Error('Пустой ответ сервера')
   return data
+}
+
+export async function getContactInfo(credentials: Credentials, chatId: string) {
+  const data = await request<GetContactInfoResponse>(credentials, {
+    method: 'POST',
+    path: 'getContactInfo',
+    body: { chatId },
+  })
+  if (!data) throw new Error('Пустой ответ сервера')
+  return data
+}
+
+export async function getChatHistory(
+  credentials: Credentials,
+  chatId: string,
+  count = 50,
+) {
+  const data = await request<GetChatHistoryResponse>(credentials, {
+    method: 'POST',
+    path: 'getChatHistory',
+    body: { chatId, count },
+  })
+
+  // пустая история приходит как [], но подстрахуемся
+  return data ?? []
 }
 
 export async function sendMessage(
