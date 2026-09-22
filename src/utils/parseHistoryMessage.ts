@@ -4,12 +4,13 @@ import type { Message } from '../types/chat'
 // null означает «в чате показывать нечего»
 function extractText(item: ChatHistoryMessage): string | null {
   switch (item.typeMessage) {
+    // пустой текст тоже считаем «показывать нечего», поэтому || , а не ??
     case 'textMessage':
-      return item.textMessage ?? null
+      return item.textMessage || null
 
     case 'extendedTextMessage':
     case 'quotedMessage':
-      return item.extendedTextMessage?.text ?? item.textMessage ?? null
+      return item.extendedTextMessage?.text || item.textMessage || null
 
     // действия над уже существующим сообщением, а не новое сообщение
     case 'reactionMessage':
@@ -22,7 +23,7 @@ function extractText(item: ChatHistoryMessage): string | null {
     case 'documentMessage':
     case 'audioMessage':
     case 'stickerMessage':
-      return item.caption ?? '[Вложение]'
+      return item.caption || '[Вложение]'
 
     case 'locationMessage':
       return '[Геопозиция]'

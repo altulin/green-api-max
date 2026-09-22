@@ -11,12 +11,13 @@ function extractText(
   messageData: MessageNotification['messageData'],
 ): string | null {
   switch (messageData.typeMessage) {
+    // пустой текст тоже считаем «показывать нечего», поэтому || , а не ??
     case 'textMessage':
-      return messageData.textMessageData.textMessage
+      return messageData.textMessageData.textMessage || null
 
     case 'extendedTextMessage':
     case 'quotedMessage':
-      return messageData.extendedTextMessageData.text
+      return messageData.extendedTextMessageData.text || null
 
     // действия над уже существующим сообщением, а не новое сообщение
     case 'reactionMessage':
@@ -29,7 +30,7 @@ function extractText(
     case 'documentMessage':
     case 'audioMessage':
     case 'stickerMessage':
-      return messageData.fileMessageData.caption ?? '[Вложение]'
+      return messageData.fileMessageData.caption || '[Вложение]'
 
     case 'locationMessage':
       return '[Геопозиция]'
