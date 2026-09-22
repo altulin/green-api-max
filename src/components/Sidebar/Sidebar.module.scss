@@ -1,0 +1,147 @@
+.sidebar {
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  width: 394px; // как в web.max.ru
+  border-right: 1px solid var(--divider);
+  background: var(--background-primary);
+
+  @media (width <= 1100px) {
+    width: 320px;
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px;
+}
+
+.title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.logout {
+  margin-left: auto;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text-tertiary);
+  font-size: 14px;
+  cursor: pointer;
+
+  &:hover {
+    background: var(--background-surface);
+    color: var(--text-secondary);
+  }
+}
+
+.add {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    transform 0.15s;
+
+  &:hover {
+    background: var(--accent-hover);
+  }
+}
+
+// открытая форма — тот же плюс, повёрнутый в крестик
+.addOpen {
+  transform: rotate(45deg);
+}
+
+.empty {
+  margin: 0;
+  padding: 24px 16px;
+  color: var(--text-tertiary);
+  font-size: 14px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.list {
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  list-style: none;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 9px 16px;
+  border: none;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+
+  &:hover {
+    background: var(--background-secondary);
+  }
+}
+
+.itemActive {
+  background: rgb(0 122 255 / 8%);
+
+  &:hover {
+    background: rgb(0 122 255 / 8%);
+  }
+}
+
+.itemBody {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.itemTop {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.itemName {
+  overflow: hidden;
+  color: var(--text-primary);
+  font-size: 15px;
+  font-weight: 500;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.itemTime {
+  flex: none;
+  color: var(--text-tertiary);
+  font-size: 12px;
+}
+
+.itemPreview {
+  overflow: hidden;
+  color: var(--text-secondary);
+  font-size: 14px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

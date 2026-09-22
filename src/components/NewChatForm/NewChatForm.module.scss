@@ -1,0 +1,60 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--divider);
+}
+
+.row {
+  display: flex;
+  gap: 8px;
+}
+
+// поле как поиск в MAX: 36px, скругление 12px, серая подложка
+.input {
+  flex: 1;
+  min-width: 0;
+  height: 36px;
+  padding: 6px 12px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-input);
+  background: rgb(9 9 9 / 5%);
+  font-size: 15px;
+  line-height: 20px;
+
+  &:focus {
+    border-color: var(--accent);
+    background: var(--background-primary);
+    outline: none;
+  }
+}
+
+.button {
+  flex: none;
+  height: 36px;
+  padding: 0 14px;
+  border: none;
+  border-radius: var(--radius-input);
+  background: var(--accent);
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.15s;
+
+  &:hover:not(:disabled) {
+    background: var(--accent-hover);
+  }
+
+  &:disabled {
+    background: var(--accent-disabled);
+    cursor: default;
+  }
+}
+
+.error {
+  margin: 0;
+  color: var(--text-negative);
+  font-size: 12px;
+  line-height: 1.3;
+}

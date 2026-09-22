@@ -1,0 +1,68 @@
+.form {
+  width: 100%;
+
+  // та же центрированная колонка, что и у сообщений
+  max-width: var(--message-zone-width);
+  margin-inline: auto;
+  padding: 0 16px 16px;
+}
+
+// белая «пилюля», как в MAX: высота 48px, скругление 16px, отступ 4px
+.pill {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  min-height: 48px;
+  padding: 4px;
+  border-radius: 16px;
+  background: var(--background-primary);
+}
+
+.input {
+  flex: 1;
+  max-height: 120px;
+  padding: 10px 12px;
+  border: none;
+  background: transparent;
+  font-size: 16px;
+  line-height: 20px;
+  resize: none;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.counter {
+  align-self: center;
+  padding-right: 4px;
+  color: var(--text-negative);
+  font-size: 12px;
+}
+
+.send {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    opacity 0.15s;
+
+  &:hover:not(:disabled) {
+    background: var(--accent-hover);
+  }
+
+  &:disabled {
+    background: transparent;
+    color: var(--text-tertiary);
+    cursor: default;
+  }
+}

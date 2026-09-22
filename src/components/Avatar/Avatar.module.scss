@@ -1,0 +1,44 @@
+.avatar {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: var(--background-surface);
+  color: #fff;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  object-fit: cover;
+}
+
+.small {
+  width: 40px;
+  height: 40px;
+  font-size: 14px;
+}
+
+.medium {
+  width: 56px;
+  height: 56px;
+  font-size: 18px;
+}
+
+.sky {
+  background: linear-gradient(135deg, #08d7f3, #5398ff);
+}
+
+.violet {
+  background: linear-gradient(135deg, #bf97ff, #526eff);
+}
+
+.green {
+  background: linear-gradient(135deg, #14e1d5, #03c722);
+}
+
+.orange {
+  background: linear-gradient(135deg, #ffc93d, #ff832a);
+}
+
+.coral {
+  background: linear-gradient(135deg, #ff48b6, #ff8a35);
+}

@@ -1,0 +1,46 @@
+.window {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+
+  // фон и узор приходят от .layout, здесь фона нет
+}
+
+.placeholder {
+  margin: auto;
+  padding: 12px 20px;
+  border-radius: var(--radius-bubble);
+  background: rgb(255 255 255 / 80%);
+  color: var(--text-secondary);
+  font-size: 15px;
+}
+
+.header {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 24px;
+  border-bottom: 1px solid var(--divider);
+  background: var(--background-primary);
+}
+
+.headerText {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.name {
+  overflow: hidden;
+  font-size: 16px;
+  font-weight: 600;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.subtitle {
+  color: var(--text-tertiary);
+  font-size: 13px;
+}

@@ -1,0 +1,55 @@
+/* Палитра взята из светлой темы web.max.ru (тема space) */
+:root {
+  --accent: #007aff;
+  --accent-hover: #479fff;
+  --accent-pressed: #006be0;
+  --accent-disabled: #007aff99;
+
+  --background-primary: #fff;
+  --background-secondary: #f5f7fa;
+  --background-surface: #edeef2;
+
+  --text-primary: #060708;
+  --text-secondary: #060708ad;
+  --text-tertiary: #06070885;
+  --text-negative: #ce4257;
+
+  --divider: #0c0d0e29;
+  --input-stroke: #0c0d0e29;
+
+  --bubble-incoming-bg: #fff;
+  --bubble-incoming-text: #060708;
+  --bubble-incoming-time: #06070885;
+  --bubble-outgoing-bg: #e9fdff;
+  --bubble-outgoing-text: #011c29;
+  --bubble-outgoing-time: #0784b8;
+
+  --chat-bg-step-1: #99d5d7;
+  --chat-bg-step-2: #80bcff;
+
+  --message-zone-width: 732px;
+  --radius-bubble: 16px;
+  --radius-cell: 16px;
+  --radius-input: 12px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: var(--text-primary);
+  font-family:
+    -apple-system, BlinkMacSystemFont, Roboto, system-ui, 'Segoe UI', Arial,
+    sans-serif;
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+}
+
+input,
+button {
+  font: inherit;
+}

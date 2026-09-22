@@ -1,0 +1,107 @@
+.list {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 16px;
+  overflow-y: auto;
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  gap: 8px; // расстояние между сообщениями, как в MAX
+  width: 100%;
+
+  // колонка сообщений по центру, как в MAX
+  max-width: var(--message-zone-width);
+  margin-top: auto; // переписка начинается от нижнего края
+  margin-inline: auto;
+}
+
+.empty {
+  margin: auto;
+  max-width: 320px;
+  padding: 12px 16px;
+  border-radius: var(--radius-bubble);
+  background: rgb(255 255 255 / 75%);
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.dayRow {
+  display: flex;
+  justify-content: center;
+  padding: 12px 0 8px;
+}
+
+.day {
+  padding: 4px 12px;
+  border-radius: 12px;
+  background: rgb(255 255 255 / 70%);
+  color: var(--text-secondary);
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.row {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.rowOutgoing {
+  justify-content: flex-end;
+}
+
+.bubble {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  max-width: min(480px, 75%);
+  padding: 8px 10px 10px;
+  border-radius: var(--radius-bubble);
+}
+
+.bubbleIncoming {
+  background: var(--bubble-incoming-bg);
+  color: var(--bubble-incoming-text);
+
+  .meta {
+    color: var(--bubble-incoming-time);
+  }
+}
+
+.bubbleOutgoing {
+  background: var(--bubble-outgoing-bg);
+  color: var(--bubble-outgoing-text);
+
+  .meta {
+    color: var(--bubble-outgoing-time);
+  }
+}
+
+.text {
+  font-size: 16px;
+  line-height: 20px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.meta {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.pending {
+  opacity: 0.5;
+}
+
+.failed {
+  color: var(--text-negative);
+  font-weight: 600;
+}

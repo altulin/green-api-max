@@ -1,0 +1,155 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="280" height="280" viewBox="0 0 280 280" fill="none">
+  <defs>
+    <g id="saturn" transform="scale(1.3)">
+      <circle cx="0" cy="0" r="7" />
+      <ellipse cx="0" cy="0" rx="12.5" ry="4" transform="rotate(-20)" />
+    </g>
+
+    <g id="planet" transform="scale(1.3)">
+      <circle cx="0" cy="0" r="8" />
+      <path d="M-6 -3c3 2 6 2 9 0M-5 3c3 2 7 2 10 -1" />
+    </g>
+
+    <g id="rocket" transform="scale(1.3)">
+      <path d="M0 -10c3.5 3 5 7.5 5 12l-3.5 4h-3L-5 2c0-4.5 1.5-9 5-12Z" />
+      <path d="M-5 6l-4 5 4 1M5 6l4 5-4 1" />
+      <circle cx="0" cy="-1" r="2" />
+    </g>
+
+    <g id="satellite" transform="scale(1.3)">
+      <rect x="-4" y="-4" width="8" height="8" rx="1.5" />
+      <path d="M-4 0h-7M4 0h7M0 -4v-5" />
+      <path d="M-11 -3v6M11 -3v6" />
+    </g>
+
+    <g id="atom" transform="scale(1.3)">
+      <circle cx="0" cy="0" r="1.8" />
+      <ellipse cx="0" cy="0" rx="9" ry="3.6" />
+      <ellipse cx="0" cy="0" rx="9" ry="3.6" transform="rotate(60)" />
+      <ellipse cx="0" cy="0" rx="9" ry="3.6" transform="rotate(-60)" />
+    </g>
+
+    <g id="comet" transform="scale(1.3)">
+      <path d="M4 -4c3.5 0 6 2.5 6 6s-2.5 6-6 6-6-2.5-6-6" />
+      <path d="M-2 8l-9 8M-6 4l-9 6M2 11l-6 8" />
+    </g>
+
+    <g id="moon" transform="scale(1.3)">
+      <path d="M3 -7a8 8 0 1 0 5 12A9.5 9.5 0 0 1 3 -7Z" />
+    </g>
+
+    <g id="ufo" transform="scale(1.3)">
+      <path d="M-5 -1a5 5 0 0 1 10 0" />
+      <ellipse cx="0" cy="0" rx="11" ry="4" />
+      <path d="M-7 5l-3 4M7 5l3 4M0 6v5" />
+    </g>
+
+    <g id="constellation" transform="scale(1.3)">
+      <path d="M-12 -6L-2 2l8 -6 8 7" />
+      <circle cx="-12" cy="-6" r="1.6" />
+      <circle cx="-2" cy="2" r="1.6" />
+      <circle cx="6" cy="-4" r="1.6" />
+      <circle cx="14" cy="3" r="1.6" />
+    </g>
+
+    <g id="constellation2" transform="scale(1.3)">
+      <path d="M-10 4l4 -9 9 2 5 -6" />
+      <circle cx="-10" cy="4" r="1.6" />
+      <circle cx="-6" cy="-5" r="1.6" />
+      <circle cx="3" cy="-3" r="1.6" />
+      <circle cx="8" cy="-9" r="1.6" />
+    </g>
+
+    <g id="spark" transform="scale(1.3)">
+      <path d="M0 -5.5l1.7 3.8L5.5 0 1.7 1.7 0 5.5l-1.7-3.8L-5.5 0l3.8-1.7z" />
+    </g>
+
+    <g id="star8" transform="scale(1.3)">
+      <path d="M0 -7l1.6 4.3L5.5 -5l-2.2 4 4.7.7-4.7.7 2.2 4-3.9-2.3L0 7l-1.6-4.9-3.9 2.3 2.2-4-4.7-.7 4.7-.7-2.2-4 3.9 2.3z" />
+    </g>
+
+    <g id="dot" transform="scale(1.3)">
+      <circle cx="0" cy="0" r="2" />
+    </g>
+  </defs>
+
+  <g
+    stroke="#007aff"
+    stroke-opacity="0.34"
+    stroke-width="1.3"
+    fill="none"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <!-- ряд 1 -->
+    <use href="#saturn" transform="translate(22 18)" />
+    <use href="#comet" transform="translate(72 24) rotate(-10)" />
+    <use href="#constellation" transform="translate(130 16)" />
+    <use href="#rocket" transform="translate(186 22) rotate(18)" />
+    <use href="#spark" transform="translate(228 14)" />
+    <use href="#ufo" transform="translate(262 26)" />
+
+    <!-- ряд 2 -->
+    <use href="#atom" transform="translate(16 62)" />
+    <use href="#moon" transform="translate(58 70)" />
+    <use href="#planet" transform="translate(104 60)" />
+    <use href="#star8" transform="translate(150 68)" />
+    <use href="#satellite" transform="translate(200 62)" />
+    <use href="#constellation2" transform="translate(252 70)" />
+    <use href="#dot" transform="translate(80 48)" />
+    <use href="#dot" transform="translate(176 80)" />
+
+    <!-- ряд 3 -->
+    <use href="#rocket" transform="translate(34 110) rotate(-12)" />
+    <use href="#spark" transform="translate(76 104)" />
+    <use href="#constellation" transform="translate(126 112)" />
+    <use href="#comet" transform="translate(180 108) rotate(15)" />
+    <use href="#saturn" transform="translate(232 116)" />
+    <use href="#dot" transform="translate(268 100)" />
+
+    <!-- ряд 4 -->
+    <use href="#ufo" transform="translate(18 152)" />
+    <use href="#planet" transform="translate(64 158)" />
+    <use href="#atom" transform="translate(112 150)" />
+    <use href="#moon" transform="translate(162 160)" />
+    <use href="#star8" transform="translate(206 152)" />
+    <use href="#satellite" transform="translate(256 158)" />
+    <use href="#dot" transform="translate(140 136)" />
+    <use href="#spark" transform="translate(236 132)" />
+
+    <!-- ряд 5 -->
+    <use href="#constellation2" transform="translate(30 200)" />
+    <use href="#saturn" transform="translate(88 206)" />
+    <use href="#rocket" transform="translate(142 198) rotate(24)" />
+    <use href="#comet" transform="translate(192 204) rotate(-8)" />
+    <use href="#planet" transform="translate(246 200)" />
+    <use href="#spark" transform="translate(60 182)" />
+    <use href="#dot" transform="translate(216 178)" />
+
+    <!-- ряд 6 -->
+    <use href="#moon" transform="translate(16 246)" />
+    <use href="#star8" transform="translate(62 254)" />
+    <use href="#atom" transform="translate(114 248)" />
+    <use href="#constellation" transform="translate(172 256)" />
+    <use href="#ufo" transform="translate(222 248)" />
+    <use href="#satellite" transform="translate(266 256)" />
+    <use href="#spark" transform="translate(146 230)" />
+    <use href="#dot" transform="translate(94 232)" />
+
+    <!-- дубли у краёв, чтобы плитка стыковалась без пустых полос -->
+    <use href="#saturn" transform="translate(302 18)" />
+    <use href="#ufo" transform="translate(-18 26)" />
+    <use href="#atom" transform="translate(296 62)" />
+    <use href="#constellation2" transform="translate(-28 70)" />
+    <use href="#dot" transform="translate(-12 100)" />
+    <use href="#ufo" transform="translate(298 152)" />
+    <use href="#satellite" transform="translate(-24 158)" />
+    <use href="#moon" transform="translate(296 246)" />
+    <use href="#satellite" transform="translate(-14 256)" />
+    <use href="#saturn" transform="translate(22 298)" />
+    <use href="#constellation" transform="translate(130 296)" />
+    <use href="#moon" transform="translate(16 -34)" />
+    <use href="#atom" transform="translate(114 -32)" />
+    <use href="#ufo" transform="translate(222 -32)" />
+  </g>
+</svg>
