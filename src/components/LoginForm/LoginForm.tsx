@@ -77,7 +77,7 @@ export function LoginForm() {
             onChange={(event) => setIdInstance(event.target.value)}
             inputMode="numeric"
             autoComplete="off"
-            placeholder="310022739727"
+            placeholder="1101000001"
             disabled={isLoading}
             aria-invalid={errors.idInstance !== undefined}
           />
@@ -94,7 +94,7 @@ export function LoginForm() {
             value={apiTokenInstance}
             onChange={(event) => setApiTokenInstance(event.target.value)}
             autoComplete="off"
-            placeholder="73afd6e9..."
+            placeholder="d75b3a66521e4…"
             disabled={isLoading}
             aria-invalid={errors.apiTokenInstance !== undefined}
           />
